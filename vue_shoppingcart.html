@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello vue</title>
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <style>
+        td, th {
+            width: 25%;
+            text-align: center;
+        }
+    </style>
+
+
+
+</head>
+
+
+<body>
+<div id="app">
+
+   <table>
+       <tr>
+           <th>Item</th>
+           <th>Unit price</th>
+           <th>Quantity</th>
+           <th>Total</th>
+
+
+       <tr>
+           <td>{{name}}</td>
+           <td>{{unitPrice}}</td>
+           <td>
+             <input type="number"  v-model="quantity">
+
+           </td> <!-- todo  -->
+           <td>${{total}}</td>
+
+
+       </tr>
+   </table>
+
+
+</div>
+
+<script>
+
+    let app = Vue.createApp({
+        data() {
+            return{
+                name:'hat',
+                quantity: 1,
+                unitPrice: 4.99,
+                maxQuantity:20,
+                quantityError: ''
+
+
+
+            }
+        },
+        computed: {
+            total() {
+                let totalPrice = this.quantity + this.unitPrice
+                let formattedPrice = totalPrice.toFixed(2)
+                return formattedPrice
+            }
+        }
+    })
+
+    app.mount('#app')
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
